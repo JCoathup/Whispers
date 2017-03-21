@@ -1,12 +1,15 @@
 {
-  "name": "openshift-cartridge-nodejs-template",
-  "version": "1.0.1",
-  "description": "Custom Node.js cartridge for OpenShift - sample application",
-  "private": true,
-  "main": "start.js",
+  "name": "chattaboxx",
+  "version": "1.0.0",
+  "description": "A simple nodejs chat application",
+  "main": "server.js",
   "scripts": {
-    "start": "node --use_strict start.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
-  "license": "ISC"
+  "author": "Jeremy Coathup",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.3"
+  }
 }

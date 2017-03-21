@@ -1,0 +1,125 @@
+body {
+  background-color:#0000ff;
+  font-family:helvetica;
+}
+#chattaboxx {
+width:90%;
+margin:1% auto;
+height:90vh;
+background-color:#6495ed;
+padding:0;
+display:flex;
+border:2px solid #0000ff;
+flex-direction:column;
+padding:1%;
+}
+#username {
+  width:75%;
+}
+.user{
+  font-weight:bold;
+  color:#ffffff;
+}
+input[type=submit]{
+background-color:#0000ff;
+color:#ffffff;
+display:inline-block;
+width:25%;
+font-weight:bold;
+border:0;
+border-radius:3px;
+margin:auto;
+height:7vh;
+}
+
+input[type=text]{
+background-color:#ffffff;
+display:inline-block;
+width:75%;
+margin:auto;
+border=0;
+height:6vh;
+font-size:24px;
+padding-left:2%;
+}
+#mainWindow{
+  width:100%;
+  display:flex;
+  margin:auto;
+}
+#chatWindow {
+  width:90%;
+  background-color:#fff;
+  margin: auto;
+  height:66vh;
+  padding:2%;
+  overflow:auto;
+  font-size:14px;
+}
+h2 {
+  font-size:22px;
+}
+#clear {
+  position:absolute;
+  bottom: 22vh;
+  font-size:10px;
+
+}
+.chathandle {
+  clear:left;
+  width:10%;
+  float:left;
+  padding:2%;
+  margin:1% auto;
+}
+#chatmessage {
+  margin:1% auto;
+  max-width:70%;
+  line-height:120%;
+  padding:2%;
+  background-color:#999;
+  color:#fff;
+  font-size:16px;
+  border-radius:6px;
+  float:left;
+  position:relative;
+}
+.privateReplyList{
+  margin:1% auto;
+  font-weight:bold;
+  font-style:italic;
+  max-width:20%;
+  padding-left:1%;
+  float:left;
+  font-size:10px;
+}
+#userList {
+  width:10%;
+  list-style-type: none;
+  padding:2%;
+  color:#ffffff;
+}
+nav {
+  width:100%;
+  border:1px solid #0000ff;
+  height:5vh;
+  margin:auto;
+}
+
+form{
+  width:100%;
+  display:flex;
+  height:7vh;
+  padding:0;
+}
+
+form p {
+  font-size:16px;
+  color:#fff;
+}
+
+#chatname {
+  font-size:32px;
+  color: green;
+  font-weight:bold;
+}
