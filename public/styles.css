@@ -71,6 +71,8 @@ h2 {
   float:left;
   padding:2%;
   margin:1% auto;
+  font-weight:bold;
+  font-size:20px;
 }
 #chatmessage {
   margin:1% auto;
