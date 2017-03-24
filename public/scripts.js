@@ -81,7 +81,7 @@ document.addEventListener("click", function(e){
         }
       }
     }
-  targetUser.style.color = "green";
+  e.target.id.style.color = "green";
   privateUserList.push(e.target.id);
   console.log(privateUserList);
   socket.emit('private message', privateUserList);
