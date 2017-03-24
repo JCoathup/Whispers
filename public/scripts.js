@@ -67,9 +67,9 @@ document.addEventListener("click", function(e){
       }
     var targetUser = document.getElementById(e.target.id);
     for(var i=0; i<privateUserList.length; i++) {
-      if (privateUserList[i] == e.target.id){
+      if (privateUserList[i] == targetUser){
         targetUser.style.color = "white";
-        var index = privateUserList.indexOf(e.target.id);
+        var index = privateUserList.indexOf(targetUser);
         if (index > -1) {
           privateUserList.splice(index, 1);
           console.log(privateUserList);
@@ -79,7 +79,7 @@ document.addEventListener("click", function(e){
       }
     }
   targetUser.style.color = "green";
-  privateUserList.push(e.target.id);
+  privateUserList.push(targetUser);
   console.log(privateUserList);
   socket.emit('private message', privateUserList);
   }
