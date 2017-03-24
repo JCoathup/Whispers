@@ -63,11 +63,8 @@ var privateUserList =[];
 document.addEventListener("click", function(e){
   if(e.target && e.target.className == "user"){
     if (privateUserList.length == 0){
-      var users = document.getElementsByClassName("user");
-      for (var i=0; i < users.length; i++){
-        users[i].style.color = "white";
+      resetList();
       }
-    }
     var targetUser = document.getElementById(e.target.id);
     for(var i=0; i<privateUserList.length; i++) {
       if (privateUserList[i] == e.target.id){
@@ -81,7 +78,7 @@ document.addEventListener("click", function(e){
         }
       }
     }
-  e.target.id.style.color = "green";
+  targetUser.style.color = "green";
   privateUserList.push(e.target.id);
   console.log(privateUserList);
   socket.emit('private message', privateUserList);
