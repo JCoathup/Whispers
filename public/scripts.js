@@ -65,7 +65,7 @@ document.addEventListener("click", function(e){
     if (privateUserList.length == 0){
       resetList();
       }
-    var targetUser = document.getElementById(e.target.id);
+    //var targetUser = document.getElementById(e.target.id);
     for(var i=0; i<privateUserList.length; i++) {
       if (privateUserList[i] == e.target.id){
         e.target.style.color = "white";
