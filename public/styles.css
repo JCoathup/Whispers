@@ -88,10 +88,11 @@ h2 {
 }
 .privateReplyList{
   margin:1% auto;
+  margin-left:1%;
   font-weight:bold;
   font-style:italic;
   max-width:20%;
-  padding-left:1%;
+  padding:1%;
   float:left;
   font-size:10px;
   background-color:#fff;
