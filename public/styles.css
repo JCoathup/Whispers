@@ -92,6 +92,8 @@ h2 {
   padding-left:1%;
   font-weight:bold;
   font-style:italic;
+  float:left;
+  clear:left;
 }
 .privateReplyList{
   margin:1% auto;
