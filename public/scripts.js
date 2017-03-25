@@ -79,7 +79,7 @@ document.addEventListener("click", function(e){
         }
       }
     }
-  e.target.style.color = "#9f000f";
+  e.target.style.color = "#F87217";
   privateUserList.push(e.target.id);
   //console.log(privateUserList);
   socket.emit('private message', privateUserList);
@@ -102,7 +102,7 @@ document.addEventListener("click", function(e){
       for (var z = 0; z < privateUserList.length; z++){
         if (users[y].textContent == privateUserList[z]){
 
-          users[y].style.color = "#9f000f";
+          users[y].style.color = "#F87217";
         }
       }
     }
