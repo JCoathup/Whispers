@@ -86,6 +86,12 @@ h2 {
   float:left;
   position:relative;
 }
+.whisper{
+  float:left;
+  font-weight:bold;
+  clear:left;
+  font-style:italic;
+}
 .privateReplyList{
   margin:1% auto;
   font-weight:bold;
@@ -103,7 +109,7 @@ h2 {
 }
 nav {
   width:100%;
-  border:1px solid #0000ff;
+  border:1px solid #999;
   height:5vh;
   margin:auto;
 }
