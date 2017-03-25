@@ -22,7 +22,7 @@ socket.on('new message', function(data){
   if (!data.msg == " "){
   chatWindow.innerHTML += "<div style='color:"+data.color+"' class='chathandle'>"+data.user+":</div></strong> <div style='background-color:"+data.color+"' id='chatmessage'>"+data.msg+"</div>";
   if (!data.list == " "){
-    chatWindow.innerHTML += "<div id="+data.user+" class='privateReplyList'>"+data.list+"</div>";
+    chatWindow.innerHTML += "<div class="whisper">Sshh... click to reply</div><div id="+data.user+" class='privateReplyList'>"+data.list+"</div>";
   }
   updateScroll();
 }
