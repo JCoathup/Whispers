@@ -39,6 +39,7 @@ connect.addEventListener("click", function(e){
     // check for duplicate user
     socket.on('duplicate username', function(data){
       if(data == true){
+        username.value="";
         username.placeholder = "Username taken!";
         return;
       }
