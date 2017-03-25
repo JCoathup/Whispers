@@ -68,19 +68,19 @@ document.addEventListener("click", function(e){
     //var targetUser = document.getElementById(e.target.id);
     for(var i=0; i<privateUserList.length; i++) {
       if (privateUserList[i] == e.target.id){
-        e.target.style.color = "white";
+        e.target.style.color = "#ffffff";
         var index = privateUserList.indexOf(e.target.id);
         if (index > -1) {
           privateUserList.splice(index, 1);
-          console.log(privateUserList);
+          //console.log(privateUserList);
           socket.emit('private message', privateUserList);
           return;
         }
       }
     }
-  e.target.style.color = "green";
+  e.target.style.color = "#9f000f";
   privateUserList.push(e.target.id);
-  console.log(privateUserList);
+  //console.log(privateUserList);
   socket.emit('private message', privateUserList);
   }
 });
@@ -101,7 +101,7 @@ document.addEventListener("click", function(e){
       for (var z = 0; z < privateUserList.length; z++){
         if (users[y].textContent == privateUserList[z]){
 
-          users[y].style.color = "green";
+          users[y].style.color = "#9f000f";
         }
       }
     }
@@ -119,7 +119,7 @@ function resetList(){
   console.log("heh");
   var list = document.getElementsByClassName('user');
   for (var x = 0; x < list.length; x++){
-    list[x].style.color = "white";
+    list[x].style.color = "#ffffff";
   }
   privateUserList = [];
   socket.emit('private message', privateUserList);
