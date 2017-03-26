@@ -137,10 +137,13 @@ form p {
   #userList {
     width:15%;
   }
+  .chathandle{
+    margin-bottom:0;
+  }
   #chatmessage{
     clear:left;
     float:left;
-    margin:1% 0;
+    margin:5% 0;
   }
 }
 @media screen and (max-width: 680px){
