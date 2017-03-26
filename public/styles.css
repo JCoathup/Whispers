@@ -138,8 +138,9 @@ form p {
     width:15%;
   }
   .chathandle{
-    float:left;
-    clear:left;
+    float:none;
+    position:relative;
+    left:0;
   }
 }
 @media screen and (max-width: 680px){
