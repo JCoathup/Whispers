@@ -137,6 +137,9 @@ form p {
   #userList {
     width:15%;
   }
+  .chathandle{
+    clear:left;
+  }
 }
 @media screen and (max-width: 680px){
   #chatWindow {
