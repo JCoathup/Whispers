@@ -146,3 +146,11 @@ form p {
     width:20%;
   }
 }
+@media screen and (max-width: 550px){
+  #chatWindow {
+    width:75%;
+  }
+  #userList {
+    width:25%;
+  }
+}
