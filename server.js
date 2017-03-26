@@ -63,7 +63,7 @@ io.sockets.on ('connection', function(socket){
         return;
       }
     }
-    var colourArray = ["#fff8c6", "#ffff00", "#ffd700", "#b1bb17", "#008000", "#006400", "#82caff", "#0000cd", "#191970", "#ffa500", "#f88017", "#ff7f50", "#ff0000", "#8b0000", "#faafba", "#f660ab", "#ff1493", "#c45aec", "#8b008b", "#800080", "#e2a76f", "#806517", "#8b4513", "#999999", "#666666", "#333333", "#000000"];
+    var colourArray = ["#ffd700", "#b1bb17", "#008000", "#006400", "#0000cd", "#191970", "#ffa500", "#f88017", "#ff7f50", "#ff0000", "#8b0000", "#faafba", "#f660ab", "#ff1493", "#c45aec", "#8b008b", "#800080", "#e2a76f", "#806517", "#8b4513", "#999999", "#666666", "#333333", "#000000"];
     socket.userColour = colourArray[Math.floor(Math.random() * colourArray.length)]
     socket.privateList = [];
     callback(true);
