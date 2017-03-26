@@ -138,12 +138,12 @@ form p {
     width:15%;
   }
   .chathandle{
-    margin-bottom:0;
+    margin-bottom:-2vh;
   }
   #chatmessage{
     clear:left;
     float:left;
-    margin:5% 0;
+    margin:10% 0;
   }
 }
 @media screen and (max-width: 680px){
