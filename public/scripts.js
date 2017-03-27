@@ -17,7 +17,7 @@ sendMessage.addEventListener("click", function(e){
   socket.emit('message', message.value);
   message.value = "";
 });
-//listening for messages sent by server
+//listening for messages sent by server !!
 socket.on('new message', function(data){
   if (!data.msg == " "){
   chatWindow.innerHTML += "<div style='color:"+data.color+"' class='chathandle'>"+data.user+":</div></strong> <div style='background-color:"+data.color+"' id='chatmessage'>"+data.msg+"</div>";
@@ -106,7 +106,7 @@ document.addEventListener("click", function(e){
         }
       }
     }
-    console.log(privateUserList);
+    //console.log(privateUserList);
     //return array = privateUserList;
     socket.emit('private message', privateUserList);
     }
@@ -117,7 +117,7 @@ document.addEventListener("click", function(e){
 });
 
 function resetList(){
-  console.log("heh");
+  //console.log("heh");
   var list = document.getElementsByClassName('user');
   for (var x = 0; x < list.length; x++){
     list[x].style.color = "#ffffff";
