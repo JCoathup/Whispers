@@ -12,6 +12,47 @@ var userLIst = document.getElementById("userList");
 var socket = io.connect(); //socket must be asked for on both server and client
 var privateUserList =[];
 
+
+//event: user sends message
+sendMessage.addEventListener("click", function(e){
+  e.preventDefault();
+  socket.emit('message', message.value);
+  message.value = "";
+});
+//listening for messages sent by server !!
+socket.on('new message', function(data){
+  if (!data.msg == " "){
+  chatWindow.innerHTML += "<div style='color:"+data.color+"' class='chathandle'>"+data.user+":</div></strong> <div style='background-color:"+data.color+"' id='chatmessage'>"+data.msg+"</div>";
+  if (!data.list == " "){
+    chatWindow.innerHTML += "<div id="+data.user+" class='privateReplyList'>Sshh... click to reply<br>"+data.list+"</div>";
+  }
+  updateScroll();
+}
+});
+//keeps scrollbar at bottom
+function updateScroll(){
+    var element = document.getElementById("chatWindow");
+    element.scrollTop = element.scrollHeight;
+}
+
+//updates online user list
+socket.on('get users', function(data){
+  userList.innerHTML ="<h2>Online:</h2>";
+  for (i=0; i<data.length; i++){
+    userList.innerHTML += "<li id="+data[i]+" class='user'>"+data[i]+"</li>";
+  }
+  userList.innerHTML += "<span id='clear'>Return to global chat</span";
+});
+
+function resetList(){
+  //console.log("heh");
+  var list = document.getElementsByClassName('user');
+  for (var x = 0; x < list.length; x++){
+    list[x].style.color = "#ffffff";
+  }
+  privateUserList = [];
+  socket.emit('private message', privateUserList);
+}
 //set up event delegators
 
 document.addEventListener("click", function(e){
@@ -83,44 +124,3 @@ document.addEventListener("click", function(e){
       }
     }
 });
-
-//event: user sends message
-sendMessage.addEventListener("click", function(e){
-  e.preventDefault();
-  socket.emit('message', message.value);
-  message.value = "";
-});
-//listening for messages sent by server !!
-socket.on('new message', function(data){
-  if (!data.msg == " "){
-  chatWindow.innerHTML += "<div style='color:"+data.color+"' class='chathandle'>"+data.user+":</div></strong> <div style='background-color:"+data.color+"' id='chatmessage'>"+data.msg+"</div>";
-  if (!data.list == " "){
-    chatWindow.innerHTML += "<div id="+data.user+" class='privateReplyList'>Sshh... click to reply<br>"+data.list+"</div>";
-  }
-  updateScroll();
-}
-});
-//keeps scrollbar at bottom
-function updateScroll(){
-    var element = document.getElementById("chatWindow");
-    element.scrollTop = element.scrollHeight;
-}
-
-//updates online user list
-socket.on('get users', function(data){
-  userList.innerHTML ="<h2>Online:</h2>";
-  for (i=0; i<data.length; i++){
-    userList.innerHTML += "<li id="+data[i]+" class='user'>"+data[i]+"</li>";
-  }
-  userList.innerHTML += "<span id='clear'>Return to global chat</span";
-});
-
-function resetList(){
-  //console.log("heh");
-  var list = document.getElementsByClassName('user');
-  for (var x = 0; x < list.length; x++){
-    list[x].style.color = "#ffffff";
-  }
-  privateUserList = [];
-  socket.emit('private message', privateUserList);
-}
