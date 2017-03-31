@@ -11,8 +11,6 @@ var sendMessage = document.getElementById("sendMessage");
 var userLIst = document.getElementById("userList");
 var socket = io.connect(); //socket must be asked for on both server and client
 
-
-
 //event: user sends message
 sendMessage.addEventListener("click", function(e){
   e.preventDefault();
@@ -34,7 +32,24 @@ function updateScroll(){
     var element = document.getElementById("chatWindow");
     element.scrollTop = element.scrollHeight;
 }
-
+//listening for username details after connection
+connect.addEventListener("click", function(e){
+  e.preventDefault();
+  if (!username.value == " "){
+    // check for duplicate user
+    socket.on('duplicate username', function(data){
+      if(data == true){
+        username.value="";
+        username.placeholder = "Username taken!";
+        return;
+      }
+    });
+    //no duplicate found... continue
+    socket.emit('new user', username.value, function(){
+      chatLogin.innerHTML = "<p>You are connected as: <span id='chatname'>" + username.value + "</span></p>";
+    });
+  }
+});
 //updates online user list
 socket.on('get users', function(data){
   userList.innerHTML ="<h2>Online:</h2>";
@@ -44,19 +59,9 @@ socket.on('get users', function(data){
   userList.innerHTML += "<span id='clear'>Return to global chat</span";
 });
 
-function resetList(){
-  //console.log("heh");
-  var list = document.getElementsByClassName('user');
-  for (var x = 0; x < list.length; x++){
-    list[x].style.color = "#ffffff";
-  }
-  privateUserList = [];
-  socket.emit('private message', privateUserList);
-}
-//set up event delegators
-
+// if user selects a private list then sends details of list to server
+var privateUserList =[];
 document.addEventListener("click", function(e){
-  var privateUserList =[];
   if(e.target && e.target.className == "user"){
     if (privateUserList.length == 0){
       resetList();
@@ -79,7 +84,9 @@ document.addEventListener("click", function(e){
   //console.log(privateUserList);
   socket.emit('private message', privateUserList);
   }
+});
 
+document.addEventListener("click", function(e){
   if(e.target && e.target.className == "privateReplyList"){
     resetList();
     var str = e.target.textContent;
@@ -107,21 +114,14 @@ document.addEventListener("click", function(e){
     if (e.target && e.target.id == "clear"){
       resetList();
     }
-    if(e.target && e.target.id == "connect"){
-      e.preventDefault();
-      if (!username.value == " "){
-        // check for duplicate user
-        socket.on('duplicate username', function(data){
-          if(data == true){
-            username.value="";
-            username.placeholder = "Username taken!";
-            return;
-          }
-        });
-        //no duplicate found... continue
-        socket.emit('new user', username.value, function(){
-          chatLogin.innerHTML = "<p>You are connected as: <span id='chatname'>" + username.value + "</span></p>";
-        });
-      }
-    }
 });
+
+function resetList(){
+  //console.log("heh");
+  var list = document.getElementsByClassName('user');
+  for (var x = 0; x < list.length; x++){
+    list[x].style.color = "#ffffff";
+  }
+  privateUserList = [];
+  socket.emit('private message', privateUserList);
+}
