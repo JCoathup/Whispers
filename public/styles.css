@@ -33,7 +33,7 @@ height:7vh;
 }
 
 input[type=text]{
-background-color:#ffffcc;
+background-color:#ededed;
 display:inline-block;
 width:75%;
 margin:auto;
@@ -49,7 +49,7 @@ padding-left:2%;
 }
 #chatWindow {
   width:90%;
-  background-color:#ffffcc;
+  background-color:#ededed;
   margin: auto;
   height:66vh;
   padding:2%;
