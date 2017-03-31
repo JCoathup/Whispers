@@ -10,7 +10,7 @@ var message = document.getElementById("message");
 var sendMessage = document.getElementById("sendMessage");
 var userLIst = document.getElementById("userList");
 var socket = io.connect(); //socket must be asked for on both server and client
-var privateUserList =[];
+
 
 
 //event: user sends message
@@ -56,6 +56,7 @@ function resetList(){
 //set up event delegators
 
 document.addEventListener("click", function(e){
+  var privateUserList =[];
   if(e.target && e.target.className == "user"){
     if (privateUserList.length == 0){
       resetList();
