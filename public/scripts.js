@@ -84,9 +84,7 @@ document.addEventListener("click", function(e){
   //console.log(privateUserList);
   socket.emit('private message', privateUserList);
   }
-});
 
-document.addEventListener("click", function(e){
   if(e.target && e.target.className == "privateReplyList"){
     resetList();
     var str = e.target.textContent;
@@ -114,6 +112,10 @@ document.addEventListener("click", function(e){
     if (e.target && e.target.id == "clear"){
       resetList();
     }
+});
+
+document.addEventListener("click", function(e){
+
 });
 
 function resetList(){
