@@ -63,6 +63,31 @@ socket.on('get users', function(data){
 // if user selects a private list then sends details of list to server
 
 document.addEventListener("click", function(e){
+  if(e.target && e.target.className == "user"){
+    if (privateUserList.length == 0){
+      resetList();
+      }
+    //var targetUser = document.getElementById(e.target.id);
+    for(var i=0; i<privateUserList.length; i++) {
+      if (privateUserList[i] == e.target.id){
+        e.target.style.color = "#ffffff";
+        var index = privateUserList.indexOf(e.target.id);
+        if (index > -1) {
+          privateUserList.splice(index, 1);
+          //console.log(privateUserList);
+          socket.emit('private message', privateUserList);
+          return;
+        }
+      }
+    }
+  e.target.style.color = "#F87217";
+  privateUserList.push(e.target.id);
+  //console.log(privateUserList);
+  socket.emit('private message', privateUserList);
+  }
+});
+
+document.addEventListener("click", function(e){
   if(e.target && e.target.className == "privateReplyList"){
     resetList();
     var str = e.target.textContent;
@@ -90,33 +115,6 @@ document.addEventListener("click", function(e){
     if (e.target && e.target.id == "clear"){
       resetList();
     }
-    
-  if(e.target && e.target.className == "user"){
-    if (privateUserList.length == 0){
-      resetList();
-      }
-    //var targetUser = document.getElementById(e.target.id);
-    for(var i=0; i<privateUserList.length; i++) {
-      if (privateUserList[i] == e.target.id){
-        e.target.style.color = "#ffffff";
-        var index = privateUserList.indexOf(e.target.id);
-        if (index > -1) {
-          privateUserList.splice(index, 1);
-          //console.log(privateUserList);
-          socket.emit('private message', privateUserList);
-          return;
-        }
-      }
-    }
-  e.target.style.color = "#F87217";
-  privateUserList.push(e.target.id);
-  //console.log(privateUserList);
-  socket.emit('private message', privateUserList);
-  }
-});
-
-document.addEventListener("click", function(e){
-
 });
 
 function resetList(){
