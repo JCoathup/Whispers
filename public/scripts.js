@@ -10,6 +10,7 @@ var message = document.getElementById("message");
 var sendMessage = document.getElementById("sendMessage");
 var userLIst = document.getElementById("userList");
 var socket = io.connect(); //socket must be asked for on both server and client
+var privateUserList =[];
 
 //event: user sends message
 sendMessage.addEventListener("click", function(e){
@@ -60,7 +61,7 @@ socket.on('get users', function(data){
 });
 
 // if user selects a private list then sends details of list to server
-var privateUserList =[];
+
 document.addEventListener("click", function(e){
   if(e.target && e.target.className == "user"){
     if (privateUserList.length == 0){
@@ -84,7 +85,9 @@ document.addEventListener("click", function(e){
   //console.log(privateUserList);
   socket.emit('private message', privateUserList);
   }
+});
 
+document.addEventListener("click", function(e){
   if(e.target && e.target.className == "privateReplyList"){
     resetList();
     var str = e.target.textContent;
@@ -112,10 +115,6 @@ document.addEventListener("click", function(e){
     if (e.target && e.target.id == "clear"){
       resetList();
     }
-});
-
-document.addEventListener("click", function(e){
-
 });
 
 function resetList(){
