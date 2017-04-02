@@ -35,21 +35,7 @@ function updateScroll(){
 }
 //listening for username details after connection
 connect.addEventListener("click", function(e){
-  e.preventDefault();
-  if (!username.value == " "){
-    // check for duplicate user
-    socket.on('duplicate username', function(data){
-      if(data == true){
-        username.value="";
-        username.placeholder = "Username taken!";
-        return;
-      }
-    });
-    //no duplicate found... continue
-    socket.emit('new user', username.value, function(){
-      chatLogin.innerHTML = "<p>You are connected as: <span id='chatname'>" + username.value + "</span></p>";
-    });
-  }
+
 });
 //updates online user list
 socket.on('get users', function(data){
@@ -114,6 +100,24 @@ document.addEventListener("click", function(e){
     //clears private user list
     if (e.target && e.target.id == "clear"){
       resetList();
+    }
+    //processes username input
+    if (e.target && e.target.id == "connect"){
+      e.preventDefault();
+      if (!username.value == " "){
+        // check for duplicate user
+        socket.on('duplicate username', function(data){
+          if(data == true){
+            username.value="";
+            username.placeholder = "Username taken!";
+            return;
+          }
+        });
+        //no duplicate found... continue
+        socket.emit('new user', username.value, function(){
+          chatLogin.innerHTML = "<p>You are connected as: <span id='chatname'>" + username.value + "</span></p>";
+        });
+      }
     }
 });
 
