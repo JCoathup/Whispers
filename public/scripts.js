@@ -17,7 +17,6 @@ var privateUserList =[];
 
 //clears privateUserList
 function resetList(){
-  //console.log("heh");
   var list = document.getElementsByClassName('user');
   for (var x = 0; x < list.length; x++){
     list[x].style.color = "#ffffff";
