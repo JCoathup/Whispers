@@ -8,7 +8,7 @@ users = [];
 
 var privateUserList;
 
-server.listen(process.env.OPENSHIFT_NODEJS_PORT || 8000, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
+server.listen(process.env.PORT || 8000, process.env.IP || '127.0.0.1');
 console.log('server running...');
 
 app.use('/', express.static(__dirname + '/public'));
